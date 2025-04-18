@@ -19,7 +19,7 @@ jobs:
         run: npm run wdio:headless
 
       - name: Generate Allure Report
-        run: allure:generate
+        run: npm run allure:generate
         if: always()
 
       - name: Upload Allure Results
