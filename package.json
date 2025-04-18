@@ -6,7 +6,8 @@
     "test": "wdio run ./wdio.conf.ts",
     "wdio:headless": "wdio run wdio.headless.js",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
-    "allure:report": "npm run test && npm run allure:generate && npm run allure:open"
+    "allure:report": "npm run test && npm run allure:generate && npm run allure:open",
+    "test:headless:allure": "npm run wdio:headless && npm run allure:generate"
   },
   "keywords": [
     "webdriverio",
