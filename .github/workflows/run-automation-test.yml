@@ -1,0 +1,31 @@
+name: WebdriverIO Test Automation
+on: [workflow_dispatch]
+jobs:
+  build:
+    name: Run Automation Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies and Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+
+      - name: Test
+        run: npm run wdio:headless
+
+      - name: Generate Allure Report
+        run: npx allure generate allure-results --clean -o allure-report
+        if: always()
+
+      - name: Upload Allure Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+          if-no-files-found: ignore
+          retention-days: 2
