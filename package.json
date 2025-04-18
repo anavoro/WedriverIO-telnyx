@@ -5,7 +5,7 @@
   "scripts": {
     "test": "wdio run ./wdio.conf.ts",
     "wdio:headless": "wdio run wdio.headless.js",
-    "allure:generate": "npx allure generate allure-results --clean -o allure-report",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:report": "npm run test && npm run allure:generate && npm run allure:open"
   },
   "keywords": [
@@ -29,5 +29,8 @@
     "@wdio/visual-service": "^6.4.0",
     "tsx": "^4.19.3",
     "wdio-wait-for": "^3.1.0"
+  },
+  "dependencies": {
+    "allure-commandline": "^2.33.0"
   }
 }
