@@ -2,16 +2,24 @@ import homePageBase from "./homePage";
 
 class homePageMobile extends homePageBase {
 
-  async openNavigation() {
-    const openMenuButton = $("button=Open main menu");
-    await openMenuButton.click();
-  }
-
-  async closeNavigation() {
-    const closeMenuButton = $("button=Close main menu");
-    await closeMenuButton.click();
-  }
-
+    getOpenNavigationButton() {
+        return $("button=Open main menu");
+      }
+    
+      async openNavigation() {
+        const openMenuButton = await this.getOpenNavigationButton();
+        await openMenuButton.click();
+      }
+    
+      getCloseNavigationButton() {
+        return $("button=Close main menu");
+      }
+    
+      async closeNavigation() {
+        const closeMenuButton = await this.getCloseNavigationButton();
+        await closeMenuButton.click();
+      }
+      
   getPrimaryNavigationItems() {
     return $("#main-menu-content").$$("a, button");
   }

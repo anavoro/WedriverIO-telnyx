@@ -9,7 +9,6 @@ export class signUpPage extends basePage {
 
     async verifySignUpPageContent(expectedTitle: string) {
         const actualTitleElement = await this.getSignUpFormTitle();
-
         await expect(actualTitleElement).toBeDisplayed();
         await expect(actualTitleElement).toHaveText(expectedTitle);
     }

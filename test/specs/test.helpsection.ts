@@ -41,23 +41,29 @@ it("should show the chatbot input textbox", async () => {
   
   it("should close the chat", async () => {
     await homePageDesktop.closeHelpSection();
-    const responseWindowElement = await homePageDesktop.getHelpSectionResponseWindow();
+    const responseWindowElement = await homePageDesktop.getHelpSectionResponseWindowElement();
+    await responseWindowElement.waitForExist({ timeout: 5000, reverse: true });
     const responseExists = await responseWindowElement.isExisting();
     await expect(responseExists).toBe(false);
   });
 
   it("should open model dropdown and select a model", async () => {
-    await homePageDesktop.getModelDropdown();
+    await homePageDesktop.openModelDropdown();
+    const modelDropdownOpen = await homePageDesktop.getSelectModelDropdownButton();
+    await modelDropdownOpen.waitForDisplayed({ timeout: 5000 });
+  
     const randomModel = availableModels[Math.floor(Math.random() * availableModels.length)];
-    await homePageDesktop.selectModel(randomModel);
+    await homePageDesktop.clickSelectModelDropdown();
+    await homePageDesktop.clickModelOption(randomModel);
+    await homePageDesktop.clickModelSubmitButton();
   
     const textbox = await homePageDesktop.getHelpSectionTextbox();
     await textbox.waitForDisplayed({ timeout: 5000 });
     await textbox.setValue("Hello from model test");
     await browser.keys("Enter");
-    
-    const responseWindow = await homePageDesktop.getHelpSectionResponseWindow();
-    await responseWindow.waitForDisplayed({ timeout: 10000 });
+  
+    const responseWindowElement = await homePageDesktop.getHelpSectionResponseWindowElement();
+    await responseWindowElement.waitForDisplayed({ timeout: 10000 });
     await homePageDesktop.checkModelName(randomModel);
     await homePageDesktop.closeHelpSection();
   });

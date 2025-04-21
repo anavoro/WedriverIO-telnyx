@@ -13,10 +13,9 @@ describe('Telnyx Website Functionality', () => {
   });
 
   it('should display the hero title correctly', async () => {
-    const heroTitle = homePageDesktop.getHeroTitle();
-    await expect(await heroTitle.getText()).toBe('Experience AI-powered connectivity');
+    const heroTitleElementPromise = homePageDesktop.getHeroTitle(); 
+    await expect(await heroTitleElementPromise.getText()).toBe('Experience AI-powered connectivity');
   });
-
 
   it('should meet homepage performance expectations', async () => {
     const loadTime = await homePageDesktop.verifyPageLoadTime();

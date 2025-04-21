@@ -72,37 +72,37 @@ abstract class homePage extends basePage {
     return this;
   }
 
-  get signUpButtonInHeader() {
+  getsignUpButtonInHeader() {
     return $("header a span[data-content='Sign up']");
   }
 
-  get signUpButtonInHeroSection() {
+  getsignUpButtonInHeroSection() {
     return $("main section a[href='/sign-up']");
   }
 
   async goToSignUpPageViaHeader() {
-    const headerSignUpButton = this.signUpButtonInHeader;
+    const headerSignUpButton = this.getsignUpButtonInHeader();
     await headerSignUpButton.click();
   }
 
   async goToSignUpPageViaHero() {
-    const heroSignUpButton = this.signUpButtonInHeroSection;
+    const heroSignUpButton = this.getsignUpButtonInHeroSection();
     await heroSignUpButton.click();
   }
 
-  get chatbotToggleButton() {
+  getchatbotToggleButton() {
     return $("div.c-bGYNvC > svg");
   }
 
-  get chatbotCloseButton() {
+  getchatbotCloseButton() {
     return $('button[data-state="open"].c-cODSYQ');
   }
 
-  get chatbotTitle() {
+  getchatbotTitle() {
     return $("h4*=Ask our AI assistant");
   }
 
-  get chatbotWelcomeMessage() {
+  getchatbotWelcomeMessage() {
     return $("*=I'm Telnyx's AI assistant.");
   }
 
@@ -111,13 +111,13 @@ abstract class homePage extends basePage {
   }
 
   async openChatbot() {
-    await this.chatbotToggleButton.click();
-    await this.chatbotTitle.waitForDisplayed({ timeout: 5000 });
+    await this.getchatbotToggleButton().click();
+    await this.getchatbotTitle().waitForDisplayed({ timeout: 5000 });
     return this;
   }
 
   async closeChatbot() {
-    await this.chatbotCloseButton.click();
+    await this.getchatbotCloseButton().click();
     return this;
   }
 
@@ -147,42 +147,83 @@ abstract class homePage extends basePage {
     return $(`textarea[placeholder="Enter text here"]`);
   }
 
+  async getCloseHelpSectionButton() {
+    return $('=Close chat');
+  }
 
   async closeHelpSection() {
-    const closeButton = $('=Close chat');;
+    const closeButton = await this.getCloseHelpSectionButton();
     await closeButton.click();
     return this;
   }
 
+  async getModelNameElement() {
+    return $("div.PJLV.PJLV-ihcbrhu-css");
+  }
+
   async checkModelName(modelName: string) {
-    const modelNameElement = $("div.PJLV.PJLV-ihcbrhu-css");
+    const modelNameElement = await this.getModelNameElement();
     await modelNameElement.waitForDisplayed({ timeout: 5000 });
     const elementText = await modelNameElement.getText();
     await expect(elementText).toContain(modelName);
     return this;
   }
-     
-  async getHelpSectionResponseWindow() {
+
+  async getHelpSectionResponseWindowElement() {
     return $("section[class^='c-cHwKMe']");
   }
 
-  async getModelDropdown() {
-    const modelDropdownButton = $('button.c-ewUecD.PJLV');
+  async getHelpSectionResponseWindow() {
+    const responseWindow = await this.getHelpSectionResponseWindowElement();
+    await responseWindow.waitForDisplayed({ timeout: 10000 });
+    return responseWindow;
+  }
+
+  async getModelDropdownButton() {
+    return $('button.c-ewUecD.PJLV');
+  }
+
+  async openModelDropdown() {
+    const modelDropdownButton = await this.getModelDropdownButton();
     await modelDropdownButton.click();
     return this;
   }
 
+  async getSelectModelDropdownButton() {
+    return $('button[data-state="closed"].c-lgwftA');
+  }
+
+  async clickSelectModelDropdown() {
+    const dropdownButton = await this.getSelectModelDropdownButton();
+    await dropdownButton.click();
+    return this;
+  }
+
+  async getModelOptionElement(modelName: string) {
+    return $(`div[role="menuitem"]*=${modelName}`);
+  }
+
+  async clickModelOption(modelName: string) {
+    const modelOption = await this.getModelOptionElement(modelName);
+    await modelOption.click();
+    return this;
+  }
+
+  async getModelSubmitButton() {
+    return $('form.c-iuGHFg button[type="submit"]');
+  }
+
+  async clickModelSubmitButton() {
+    const submitButton = await this.getModelSubmitButton();
+    await submitButton.click();
+    return this;
+  }
+
   async selectModel(modelName: string) {
-      const dropdownButton = $('button[data-state="closed"].c-lgwftA');
-      await dropdownButton.click(); 
-  
-      const modelOption =  $(`div[role="menuitem"]*=${modelName}`);
-      await modelOption.click();  
-  
-      const submitButton = $('form.c-iuGHFg button[type="submit"]');
-      await submitButton.click();
-  
-      return this;
+    await this.clickSelectModelDropdown();
+    await this.clickModelOption(modelName);
+    await this.clickModelSubmitButton();
+    return this;
   }
   
   async getSuggestedTopicsContainer() {
@@ -196,14 +237,13 @@ abstract class homePage extends basePage {
     return topicButton;
   }
 
-  get BlogBtn() {
+  getBlogBtn() {
     return $('a*=See All Blog Articles');
   }
 
   async goToBlog() {
-    await this.BlogBtn.click();
+    await this.getBlogBtn().click();
     return this;
   }
-
 }
 export default homePage;
