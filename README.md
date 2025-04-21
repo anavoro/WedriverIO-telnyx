@@ -34,7 +34,7 @@ To run this automation project locally, you will need to have the following prer
     - If you haven't already, clone the Git repository containing this automation project to your local machine using the following command in your terminal:
 
       ```bash
-      git clone [https://github.com/anavoro/WedriverIO-telnyx.git](https://github.com/anavoro/WedriverIO-telnyx.git)
+      git clone https://github.com/anavoro/WedriverIO-telnyx.git
       ```
 
 2.  **Navigate to the Project Directory:**
@@ -62,7 +62,7 @@ While not strictly required to run the tests, installing the WebdriverIO and All
 - **WebdriverIO CLI (Optional):**
 
   ```bash
-  npm install --global webdriverio
+  npm init wdio@latest
   ```
 
 - **Allure CLI (Recommended):** Follow the installation instructions for your operating system on the official Allure documentation: [https://docs.qameta.io/allure/#\_installing_a_commandline](https://docs.qameta.io/allure/#_installing_a_commandline) This allows you to use the `allure` command directly in your terminal.
