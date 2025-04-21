@@ -1,22 +1,22 @@
 import type { Options } from '@wdio/types';
-import * as mainConfigModule from './wdio.conf.js';
-const mainConfig = mainConfigModule.config;
+import { config as mainConfig } from './wdio.conf.js';
+
+(mainConfig.capabilities as WebdriverIO.Capabilities[]).forEach((cap) => {
+  if (cap.browserName === 'chrome') {
+    cap['goog:chromeOptions'] = {
+      ...(cap['goog:chromeOptions'] || {}),
+      args: [
+        '--headless=new',
+        '--disable-gpu',
+        '--no-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-software-rasterizer',
+      ],
+    };
+  }
+});
 
 export const config: Options.Testrunner = {
   ...mainConfig,
-  ...{
-    capabilities: [
-      {
-        browserName: 'chrome',
-        'goog:chromeOptions': {
-          args: [
-            '--headless=new',
-            '--disable-gpu',
-            '--no-sandbox',
-            '--disable-dev-shm-usage'
-          ],
-        },
-      },
-    ],
-  },
 };
+
