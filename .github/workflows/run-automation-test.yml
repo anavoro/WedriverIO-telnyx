@@ -1,9 +1,7 @@
 name: WebdriverIO Test Automation
-
 on:
   push:
   workflow_dispatch:
-
 jobs:
   build:
     name: Run Automation Tests
@@ -31,3 +29,11 @@ jobs:
           path: allure-report/**
           if-no-files-found: warn
           retention-days: 2
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          publish_branch: gh-pages
