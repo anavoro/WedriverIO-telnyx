@@ -63,19 +63,31 @@ abstract class homePage extends basePage {
     return $("footer");
   }
 
+  getcontactUsLink() { 
+    return $('a span[data-content="Contact us"]').parentElement();
+  }
+  
   async goToContactUs() {
-    const contactUsLink = $('a span[data-content="Contact us"]').parentElement();
-    await contactUsLink.click();
+    await this.getcontactUsLink().click();
     return this;
   }
 
-
-  getSignUpButtonInHeader() {
+  get signUpButtonInHeader() {
     return $("header a span[data-content='Sign up']");
   }
 
-  getSignUpButtonInHeroSection() {
+  get signUpButtonInHeroSection() {
     return $("main section a[href='/sign-up']");
+  }
+
+  async goToSignUpPageViaHeader() {
+    const headerSignUpButton = this.signUpButtonInHeader;
+    await headerSignUpButton.click();
+  }
+
+  async goToSignUpPageViaHero() {
+    const heroSignUpButton = this.signUpButtonInHeroSection;
+    await heroSignUpButton.click();
   }
 
   get chatbotToggleButton() {
@@ -126,6 +138,7 @@ abstract class homePage extends basePage {
   async getChatbotResponseMessage() {
     return $('div.c-bCIlIy.c-khViZk p');
   }
+  
   async getHelpSectionTitle() {
     return $("h3*=What can I help with?");
   }
@@ -133,6 +146,7 @@ abstract class homePage extends basePage {
   async getHelpSectionTextbox() {
     return $(`textarea[placeholder="Enter text here"]`);
   }
+
 
   async closeHelpSection() {
     const closeButton = $('=Close chat');;

@@ -46,42 +46,44 @@ it("should show the chatbot input textbox", async () => {
     await expect(responseExists).toBe(false);
   });
 
- it("should open model dropdown and select a model", async () => {
+  it("should open model dropdown and select a model", async () => {
     await homePageDesktop.getModelDropdown();
-
     const randomModel = availableModels[Math.floor(Math.random() * availableModels.length)];
     await homePageDesktop.selectModel(randomModel);
+  
     const textbox = await homePageDesktop.getHelpSectionTextbox();
+    await textbox.waitForDisplayed({ timeout: 5000 });
     await textbox.setValue("Hello from model test");
     await browser.keys("Enter");
+    
     const responseWindow = await homePageDesktop.getHelpSectionResponseWindow();
-    await expect(await responseWindow.isDisplayed()).toBe(true);
+    await responseWindow.waitForDisplayed({ timeout: 10000 });
     await homePageDesktop.checkModelName(randomModel);
     await homePageDesktop.closeHelpSection();
   });
   
-
   it("should click on suggested topics and receive relevant response", async () => {
     const expectedTopics = [
-        'Draft a 10DLC messaging campaign',
-        'What is an eSIM?',
-        'What are some use cases of LLMs for real-time voice or messaging?',
-        'How can bi-directional streaming improve my call center?',
-      ];
-  
-      for (const topicText of expectedTopics) {
-        const topicButton = await homePageDesktop.getSuggestedTopicButton(topicText);
-        await expect(topicButton).toBeDisplayed();
-      }
-  
-      const randomIndex = Math.floor(Math.random() * expectedTopics.length);
-      const randomTopic = expectedTopics[randomIndex];
-      const randomTopicButton = await homePageDesktop.getSuggestedTopicButton(randomTopic);
-      await randomTopicButton.click();
-  
-      const responseWindow = await homePageDesktop.getHelpSectionResponseWindow();
-      await expect(responseWindow).toBeDisplayed();
-      await expect(await responseWindow.getText()).toContain(randomTopic);
-
+      'Draft a 10DLC messaging campaign',
+      'What is an eSIM?',
+      'What are some use cases of LLMs for real-time voice or messaging?',
+      'How can bi-directional streaming improve my call center?',
+    ];
+    const suggestedTopicsContainer = await homePageDesktop.getSuggestedTopicsContainer();
+    await suggestedTopicsContainer.waitForDisplayed({ timeout: 5000 });
+    
+    for (const topicText of expectedTopics) {
+      await expect(await homePageDesktop.getSuggestedTopicButton(topicText)).toBeDisplayed();
+    }
+    
+    const randomTopic = expectedTopics[Math.floor(Math.random() * expectedTopics.length)];
+    const randomTopicButton = await homePageDesktop.getSuggestedTopicButton(randomTopic);
+    await randomTopicButton.scrollIntoView();
+    await randomTopicButton.waitForClickable({ timeout: 5000 });
+    await randomTopicButton.click();
+    
+    const responseWindow = await homePageDesktop.getHelpSectionResponseWindow();
+    await responseWindow.waitForDisplayed({ timeout: 10000 });
+    await expect(await responseWindow.getText()).toContain(randomTopic);
   });
- });
+});

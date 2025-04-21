@@ -1,6 +1,5 @@
 import { expect, browser } from '@wdio/globals';
 import homePageDesktop from "../pageobjects/homePageDesktop";
-import signUpPage from "../pageobjects/signUpPage";
 import contactUsPage from "../pageobjects/contactPage";
 
 describe('Telnyx Website Functionality', () => {
@@ -41,21 +40,6 @@ describe('Telnyx Website Functionality', () => {
   it('should contain "©" in the footer', async () => {
     const footerText = homePageDesktop.getFooter();
     await expect(await footerText.getText()).toContain('©');
-  });
-
-  it('should redirect to the Sign Up page when clicking the header button', async () => {
-    const signUpHeaderButton = homePageDesktop.getSignUpButtonInHeader();
-    await signUpHeaderButton.click();
-    await expect(browser).toHaveUrl('https://telnyx.com/sign-up');
-    const signUpFormTitle = await signUpPage.getContactFormTitle(); 
-    await expect(await signUpFormTitle.isDisplayed()).toBe(true);
-    await expect(await signUpFormTitle.getText()).toBe('Create a Telnyx account');
-  });
-
-  it('should redirect to the Sign Up page when clicking the main body button', async () => {
-    const signUpHeroButton = homePageDesktop.getSignUpButtonInHeroSection();
-    await signUpHeroButton.click();
-    await expect(browser).toHaveUrl('https://telnyx.com/sign-up');
   });
 
   it('should navigate to the Contact Us page', async () => {

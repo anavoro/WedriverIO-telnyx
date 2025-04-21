@@ -24,14 +24,15 @@ describe('Chatbot Interaction', () => {
     it('should send and receive a message in the chatbot', async () => {
         await homePageDesktop.openChatbot();
         const testMessage = 'Hello';
-        await homePageDesktop.typeMessageInChatbot(testMessage); 
-        await homePageDesktop.sendMessageInChatbot(); 
+        await homePageDesktop.typeMessageInChatbot(testMessage);
+        await homePageDesktop.sendMessageInChatbot();
+        
         const userMessage = await homePageDesktop.getUserChatMessage(testMessage);
-        await expect(userMessage).toBeDisplayed();
+        await userMessage.waitForDisplayed({ timeout: 10000 });
         await expect(await userMessage.getText()).toBe(testMessage);
+
         const chatbotResponse = await homePageDesktop.getChatbotResponseMessage();
-        await expect(chatbotResponse).toBeDisplayed();
-        const responseText = await chatbotResponse.getText();
-        await expect(responseText).not.toBe('');
+        await chatbotResponse.waitForDisplayed({ timeout: 10000 });
+        await expect(await chatbotResponse.getText()).not.toBe('');
       });
   });
