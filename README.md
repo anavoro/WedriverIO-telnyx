@@ -27,15 +27,7 @@ To run this automation project locally, you will need to have the following prer
 
       These commands should print the installed versions of Node.js and npm.
 
-2.  **WebdriverIO CLI (Command-Line Interface):** While WebdriverIO will be installed as a project dependency, having the CLI globally can be useful for running commands directly. You can install it using npm:
-
-    ```bash
-    npm install --global webdriverio
-    ```
-
-3.  **Allure CLI (Command-Line Interface):** To generate and open Allure reports, it's recommended to have the Allure CLI installed globally. You can find installation instructions for your operating system on the official Allure documentation: [https://docs.qameta.io/allure/#\_installing_a_commandline](https://docs.qameta.io/allure/#_installing_a_commandline)
-
-## Installation Steps
+**Installation Steps:**
 
 1.  **Clone the Repository:**
 
@@ -58,10 +50,22 @@ To run this automation project locally, you will need to have the following prer
     - Inside the project directory, install all the necessary dependencies (including WebdriverIO and Allure reporter) by running the following command:
 
       ```bash
-      **npm install**
+      npm install
       ```
 
       This command will read the `package.json` file in your project and download all the listed dependencies.
+
+**Optional Global Installations (Recommended for Convenience):**
+
+While not strictly required to run the tests, installing the WebdriverIO and Allure CLIs globally can enhance your development experience by allowing you to run commands directly without navigating to `node_modules/.bin`.
+
+- **WebdriverIO CLI (Optional):**
+
+  ```bash
+  npm install --global webdriverio
+  ```
+
+- **Allure CLI (Recommended):** Follow the installation instructions for your operating system on the official Allure documentation: [https://docs.qameta.io/allure/#\_installing_a_commandline](https://docs.qameta.io/allure/#_installing_a_commandline) This allows you to use the `allure` command directly in your terminal.
 
 ## How to Run the Tests
 
