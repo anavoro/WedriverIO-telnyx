@@ -126,11 +126,16 @@ abstract class homePage extends basePage {
     return this;
   }
 
-  async sendMessageInChatbot() {
-    await browser.keys('Enter');
-    return this;
+  getSendChatbotButton() {
+   return $('button svg[aria-describedby="send-message"]');
   }
 
+  async sendMessageInChatbot() {
+    const sendButton = this.getSendChatbotButton();
+    await sendButton.click();
+    return this;
+  }
+  
   async getUserChatMessage(message: string) {
     return $(`//div[@class='c-bCIlIy c-bupPtx'][text()='${message}']`);
   }

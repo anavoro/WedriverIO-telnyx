@@ -49,12 +49,20 @@ it("should show the chatbot input textbox", async () => {
 
   it("should open model dropdown and select a model", async () => {
     await homePageDesktop.openModelDropdown();
+  
     const modelDropdownOpen = await homePageDesktop.getSelectModelDropdownButton();
     await modelDropdownOpen.waitForDisplayed({ timeout: 5000 });
   
     const randomModel = availableModels[Math.floor(Math.random() * availableModels.length)];
+  
     await homePageDesktop.clickSelectModelDropdown();
-    await homePageDesktop.clickModelOption(randomModel);
+  
+    // Scroll the model option into view before clicking
+    const modelOption = await homePageDesktop.getModelOptionElement(randomModel);
+    await modelOption.scrollIntoView();
+    await modelOption.waitForDisplayed({ timeout: 3000 });
+    await modelOption.click();
+  
     await homePageDesktop.clickModelSubmitButton();
   
     const textbox = await homePageDesktop.getHelpSectionTextbox();
@@ -68,7 +76,9 @@ it("should show the chatbot input textbox", async () => {
     await homePageDesktop.closeHelpSection();
   });
   
+  
   it("should click on suggested topics and receive relevant response", async () => {
+    await browser.refresh();
     const expectedTopics = [
       'Draft a 10DLC messaging campaign',
       'What is an eSIM?',
