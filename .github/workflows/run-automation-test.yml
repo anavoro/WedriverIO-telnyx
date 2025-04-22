@@ -24,6 +24,9 @@ jobs:
       - name: Run WebdriverIO Tests
         run: npm run wdio:headless
 
+      - name: Create Report Directory
+        run: mkdir -p allure-report
+
       - name: Generate Report
         run: npm run allure:generate
 
