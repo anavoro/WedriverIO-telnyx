@@ -55,18 +55,6 @@ To run this automation project locally, you will need to have the following prer
 
       This command will read the `package.json` file in your project and download all the listed dependencies.
 
-**Optional Global Installations (Recommended for Convenience):**
-
-While not strictly required to run the tests, installing the WebdriverIO and Allure CLIs globally can enhance your development experience by allowing you to run commands directly without navigating to `node_modules/.bin`.
-
-- **WebdriverIO CLI (Optional):**
-
-  ```bash
-  npm init wdio@latest
-  ```
-
-- **Allure CLI (Recommended):** Follow the installation instructions for your operating system on the official Allure documentation: [https://docs.qameta.io/allure/#\_installing_a_commandline](https://docs.qameta.io/allure/#_installing_a_commandline) This allows you to use the `allure` command directly in your terminal.
-
 ## How to Run the Tests
 
 This project includes several npm scripts to facilitate running the tests and generating reports:
