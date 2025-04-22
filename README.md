@@ -101,6 +101,6 @@ This project also includes a **GitHub Actions** workflow located in `.github/wor
 
 **Author:** Anastasia Voropayeva
 **Trainee Program:** Luxe Quality
-**Contact:** voropayeva.a@gmail.com
+**Contact:** ana.voro.qa@gmail.com
 
 ---
