@@ -1,11 +1,14 @@
 name: WebdriverIO Test Automation
+
 on:
   push:
   workflow_dispatch:
+
 jobs:
   build:
     name: Run Automation Tests
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,14 +21,8 @@ jobs:
       - name: Install NPM dependencies
         run: npm install
 
-      - name: Install Allure CLI
-        run: npm install -g allure-commandline
-
       - name: Run WebdriverIO Tests and Generate a report
-        run: |
-          mkdir -p allure-report
-          npm run test
-          npm run allure:generate
+        run: npm run test:headless:allure
 
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
