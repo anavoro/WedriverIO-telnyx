@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\".//h2[contains(., \"Search results for\") and not(.//h2)]\"}\n  (Session info: chrome=135.0.7049.84)",
+  "stacktrace": "#0 0x562a5109dd0a <unknown>\n#1 0x562a50b4e5f0 <unknown>\n#2 0x562a50b9fa33 <unknown>\n#3 0x562a50b9fc21 <unknown>\n#4 0x562a50bee274 <unknown>\n#5 0x562a50bc568d <unknown>\n#6 0x562a50beb660 <unknown>\n#7 0x562a50bc5433 <unknown>\n#8 0x562a50b91ea3 <unknown>\n#9 0x562a50b92b01 <unknown>\n#10 0x562a51062b5b <unknown>\n#11 0x562a51066a41 <unknown>\n#12 0x562a51049c52 <unknown>\n#13 0x562a510675b4 <unknown>\n#14 0x562a5102df0f <unknown>\n#15 0x562a5108bdb8 <unknown>\n#16 0x562a5108bf96 <unknown>\n#17 0x562a5109cb56 <unknown>\n#18 0x7fb56e29caa4 <unknown>\n#19 0x7fb56e329c3c <unknown>\n"
+}

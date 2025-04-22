@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": ".//button[contains(., \"What is an eSIM?\") and not(.//button)]"
+}
