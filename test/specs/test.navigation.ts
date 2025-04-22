@@ -75,6 +75,8 @@ interface Config {
   
           for (const item of expectedNavItems) {
             const linkElement = await homePage.getSecondaryNavigationLinkByText(item.text);
+            await linkElement.waitForDisplayed({ timeout: 10000 }); 
+            await linkElement.waitForClickable({ timeout: 5000 }); 
             await expect(linkElement).toHaveAttribute('href', item.link);
           }
   
