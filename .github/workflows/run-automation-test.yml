@@ -28,6 +28,7 @@ jobs:
         run: mkdir -p allure-report
 
       - name: Generate Report
+        if: always()
         run: npm run allure:generate
 
       - name: Upload Allure Report Artifact
