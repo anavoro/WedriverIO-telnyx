@@ -18,13 +18,14 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install Allure CLI globally
-        run: npm install -g allure-commandline
+      - name: Install NPM dependencies
+        run: npm install
 
-      - name: Run WebdriverIO Tests (Headless) and Generate Allure Report
-        run: |
-          npm run wdio:headless
-          npm run allure:generate
+      - name: Run WebdriverIO Tests
+        run: npm run test
+
+      - name: Generate Allure Report
+        run: npm run allure:generate
 
       - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
