@@ -1,0 +1,3 @@
+visibility: hidden;
+                    opacity: 0;
+                    transition: visibility 0s 400ms, opacity 400ms linear;

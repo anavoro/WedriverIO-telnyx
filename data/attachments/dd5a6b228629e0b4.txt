@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": ".//button[contains(., \"How can bi-directional streaming improve my call center?\") and not(.//button)]"
-}
