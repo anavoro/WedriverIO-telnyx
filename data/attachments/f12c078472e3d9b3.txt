@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": "//div[@class='c-bCIlIy c-bupPtx'][text()='Hello']"
-}
