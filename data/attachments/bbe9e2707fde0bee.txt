@@ -1,5 +1,0 @@
-{
-  "error": "no such element",
-  "message": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\".//h4[contains(., \"Ask our AI assistant\") and not(.//h4)]\"}\n  (Session info: chrome=135.0.7049.84)",
-  "stacktrace": "#0 0x55bb3ecd8d0a <unknown>\n#1 0x55bb3e7895f0 <unknown>\n#2 0x55bb3e7daa33 <unknown>\n#3 0x55bb3e7dac21 <unknown>\n#4 0x55bb3e829274 <unknown>\n#5 0x55bb3e80068d <unknown>\n#6 0x55bb3e826660 <unknown>\n#7 0x55bb3e800433 <unknown>\n#8 0x55bb3e7ccea3 <unknown>\n#9 0x55bb3e7cdb01 <unknown>\n#10 0x55bb3ec9db5b <unknown>\n#11 0x55bb3eca1a41 <unknown>\n#12 0x55bb3ec84c52 <unknown>\n#13 0x55bb3eca25b4 <unknown>\n#14 0x55bb3ec68f0f <unknown>\n#15 0x55bb3ecc6db8 <unknown>\n#16 0x55bb3ecc6f96 <unknown>\n#17 0x55bb3ecd7b56 <unknown>\n#18 0x7f45bae9caa4 <unknown>\n#19 0x7f45baf29c3c <unknown>\n"
-}
