@@ -57,7 +57,6 @@ it("should show the chatbot input textbox", async () => {
   
     await homePageDesktop.clickSelectModelDropdown();
   
-    // Scroll the model option into view before clicking
     const modelOption = await homePageDesktop.getModelOptionElement(randomModel);
     await modelOption.scrollIntoView();
     await modelOption.waitForDisplayed({ timeout: 3000 });
