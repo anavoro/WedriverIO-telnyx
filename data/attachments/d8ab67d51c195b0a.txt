@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": ".//h2[contains(., \"Search results for\") and not(.//h2)]"
+}

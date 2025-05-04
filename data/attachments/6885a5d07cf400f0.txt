@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//div[@class='c-ihSZrZ']/a[normalize-space(text())='Shop']"
+}
