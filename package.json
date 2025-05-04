@@ -10,7 +10,8 @@
     "allure:report": "npm run test && npm run allure:generate && npm run allure:open",
     "test:headless:allure": "npm run wdio:headless && npm run allure:generate && npm run allure:open",
     "docker:build": "docker build -t webdriverio-telnyx:latest .",
-    "docker:shell": "docker run -it --rm webdriverio-telnyx:latest sh"
+    "docker:run": "docker run -it --rm webdriverio-telnyx:latest",
+    "docker:shell": "docker run -it --rm webdriverio-telnyx:latest bash"
   },
   "keywords": [
     "webdriverio",
